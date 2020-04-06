@@ -1,5 +1,7 @@
 package com.lawencon.ticket.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -20,12 +22,12 @@ public class TransactionDetailServiceImpl implements TransactionDetailService {
 	UserService userService;
 
 	@Override
-	public TransactionDetail save(TransactionDetail transDetail, String auth, String auth2) throws Exception {
+	public List<TransactionDetail> save(List<TransactionDetail> listTransaction, String auth, String auth2) throws Exception {
 		userService.findByUserNameAndPassword(auth, auth2);		
 //		ticketService.findByTicketType(ticketType, auth, auth2);
 //		discService.findByDiscCode(discCode, auth, auth2);
 		// set final price (price-diskon)
-		return transDetailDao.save(transDetail);
+		return transDetailDao.save(listTransaction);
 	}
 
 }

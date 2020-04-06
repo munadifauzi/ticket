@@ -7,5 +7,5 @@ public interface TransactionHeaderService {
 
 	TransactionHeader save(TransactionHeader transHeader, String auth, String auth2) throws Exception;
 	
-	void saveTransaction (Transaction transaction, String auth, String auth2) throws Exception;
+//	void saveTransaction (Transaction transaction, String auth, String auth2) throws Exception;
 }

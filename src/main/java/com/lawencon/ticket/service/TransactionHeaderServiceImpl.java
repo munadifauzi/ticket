@@ -30,19 +30,19 @@ public class TransactionHeaderServiceImpl implements TransactionHeaderService {
 		return transHeaderDao.save(transHeader);
 	}
 
-	@Override
-	public void saveTransaction(Transaction transaction, String auth, String auth2) throws Exception {
-		userService.findByUserNameAndPassword(auth, auth2);
-		TransactionHeader transHeader = transHeaderDao.save(transaction.getTrans());
-		transaction.getListTransDetail().forEach(valList -> {
-			TransactionDetail transDetail = valList;
-			transDetail.setTrans(transHeader);
-			try {
-				transDetailService.save(transDetail, auth, auth2);
-			} catch (Exception e) {
-				e.getMessage();
-			}
-		});
-	}
+//	@Override
+//	public void saveTransaction(Transaction transaction, String auth, String auth2) throws Exception {
+//		userService.findByUserNameAndPassword(auth, auth2);
+//		TransactionHeader transHeader = transHeaderDao.save(transaction.getTrans());
+//		transaction.getListTransDetail().forEach(valList -> {
+//			TransactionDetail transDetail = valList;
+//			transDetail.setTrans(transHeader);
+//			try {
+//				transDetailService.save(transDetail, auth, auth2);
+//			} catch (Exception e) {
+//				e.getMessage();
+//			}
+//		});
+//	}
 
 }

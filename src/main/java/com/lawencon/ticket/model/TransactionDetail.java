@@ -17,15 +17,15 @@ public class TransactionDetail {
 	private Long idTransactionDetail;
 	
 	@ManyToOne
-	@JoinColumn(name = "idTransaction", nullable = true)
-	private TransactionHeader trans;
-	
-	@ManyToOne
 	@JoinColumn(name = "idDiscount", nullable = true)
 	private Discount disc;
 	
 	@ManyToOne
-	@JoinColumn(name = "Ticket", nullable = true)
+	@JoinColumn(name = "idTransaction", nullable = true)
+	private TransactionHeader trans;
+	
+	@ManyToOne
+	@JoinColumn(name = "idTicket", nullable = true)
 	private Ticket ticket;
 	
 	private int finalPrice;
@@ -33,14 +33,6 @@ public class TransactionDetail {
 	private String departureDate;
 	
 	private String seat;
-
-	public TransactionHeader getTrans() {
-		return trans;
-	}
-
-	public void setTrans(TransactionHeader trans) {
-		this.trans = trans;
-	}
 
 	public Long getIdTransactionDetail() {
 		return idTransactionDetail;

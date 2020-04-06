@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lawencon.ticket.model.User;
 import com.lawencon.ticket.service.UserService;
 
 @RestController
-public class UserController extends BaseController {
+public class UserController extends BaseController<User> {
 
 	@Autowired
 	UserService userService;
@@ -41,7 +40,7 @@ public class UserController extends BaseController {
 	public ResponseEntity<?> saveUser(@RequestBody String content) {
 		User user = new User();
 		try {
-			user = new ObjectMapper().readValue(content, User.class);
+			user = super.readValue(content, User.class);
 			userService.save(user);
 		} catch (Exception e) {
 			e.getMessage();
@@ -67,7 +66,7 @@ public class UserController extends BaseController {
 		User user = new User();
 		try {
 			String[] auth = super.authUser(authorization);
-			user = new ObjectMapper().readValue(content, User.class);
+			user = super.readValue(content, User.class);
 			userService.update(user, auth[0], auth[1]);
 		} catch (Exception e) {
 			e.getMessage();

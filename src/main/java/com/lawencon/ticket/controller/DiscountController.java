@@ -15,12 +15,11 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lawencon.ticket.model.Discount;
 import com.lawencon.ticket.service.DiscountService;
 
 @RestController
-public class DiscountController extends BaseController {
+public class DiscountController extends BaseController<Discount> {
 
 	@Autowired
 	DiscountService discService;
@@ -42,7 +41,7 @@ public class DiscountController extends BaseController {
 		Discount disc = new Discount();
 		try {
 			String[] auth = super.authUser(authorization);
-			disc = new ObjectMapper().readValue(content, Discount.class);
+			disc = super.readValue(content, Discount.class);
 			discService.save(disc, auth[0], auth[1]);
 		} catch (Exception e) {
 			e.getMessage();
@@ -68,7 +67,7 @@ public class DiscountController extends BaseController {
 		Discount disc = new Discount();
 		try {
 			String[] auth = super.authUser(authorization);
-			disc = new ObjectMapper().readValue(content, Discount.class);
+			disc = super.readValue(content, Discount.class);
 			discService.update(disc, auth[0], auth[1]);
 		} catch (Exception e) {
 			e.getMessage();

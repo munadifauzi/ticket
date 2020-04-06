@@ -1,5 +1,7 @@
 package com.lawencon.ticket.dao.impl.jpa;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,8 +15,8 @@ public class TransactionDetailDaoImpl implements TransactionDetailDao {
 	TransactionDetailRepo transDetailRepo;
 	
 	@Override
-	public TransactionDetail save(TransactionDetail transDetail) throws Exception {
-		return transDetailRepo.save(transDetail);
+	public List<TransactionDetail> save(List<TransactionDetail> listTransaction) throws Exception {
+		return transDetailRepo.saveAll(listTransaction);
 	}
 
 }
